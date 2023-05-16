@@ -1,0 +1,18 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+body *{
+    margin:0.5vw;
+    display: flex;
+    align-items: baseline;
+}
+.error{
+    color: rgb(227, 84, 84);
+}
+.correct{
+    background-color: rgb(43, 222, 43);
+}
