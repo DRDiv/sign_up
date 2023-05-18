@@ -15,10 +15,11 @@ const reg2 = /^[a-zA-Z]{1}[A-Za-z_.]*@[a-zA-Z]+(\.[a-zA-Z]+)?(\.ac\.in|\.com)$/;
 const reg3 = /^[A-Za-z\s\-']+$/;
 
 const reg4 = /^[a-zA-Z]{3}[a-zA-Z_0-9]{0,}$/;
-
+var boo = true;
 cityin.addEventListener('input', () => {
     var city = cityin.value;
     if (!reg3.test(city)) {
+        boo = false
         var c = document.getElementById('cityclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -26,9 +27,10 @@ cityin.addEventListener('input', () => {
             p.className = "error"
             c.appendChild(p)
         }
-        
+
     }
     else {
+
         var c = document.getElementById('cityclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -40,6 +42,7 @@ namein.addEventListener('input', () => {
     if (
 
         !reg4.test(name)) {
+        boo = false
         var c = document.getElementById('nameclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -50,6 +53,7 @@ namein.addEventListener('input', () => {
 
     }
     else {
+        boo = true
         var c = document.getElementById('nameclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -61,6 +65,7 @@ ph.addEventListener('input', () => {
 
     var num = ph.value;
     if (!reg1.test(num)) {
+        boo = false
         var c = document.getElementById('phoneclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -72,6 +77,7 @@ ph.addEventListener('input', () => {
 
     }
     else {
+        boo = true
         var c = document.getElementById('phoneclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -81,6 +87,7 @@ ph.addEventListener('input', () => {
 email.addEventListener('input', () => {
     var id = email.value;
     if (!reg2.test(id)) {
+        boo = false
         var c = document.getElementById('emailclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -92,6 +99,7 @@ email.addEventListener('input', () => {
 
     }
     else {
+        boo = true
         var c = document.getElementById('emailclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -105,7 +113,8 @@ email.addEventListener('input', () => {
 
 but.addEventListener("click", () => {
     var city = cityin.value;
-    if (city=="") {
+    if (city == "") {
+        boo = false
         var c = document.getElementById('cityclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -113,9 +122,10 @@ but.addEventListener("click", () => {
             p.className = "error"
             c.appendChild(p)
         }
-        
+
     }
     else {
+        boo = true
         var c = document.getElementById('cityclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -124,7 +134,8 @@ but.addEventListener("click", () => {
     var name = namein.value;
     if (
 
-        name=="") {
+        name == "") {
+        boo = false
         var c = document.getElementById('nameclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -135,6 +146,7 @@ but.addEventListener("click", () => {
 
     }
     else {
+        boo = true
         var c = document.getElementById('nameclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -142,7 +154,8 @@ but.addEventListener("click", () => {
     }
 
     var num = ph.value;
-    if (num=="") {
+    if (num == "") {
+        boo=false
         var c = document.getElementById('phoneclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -154,13 +167,15 @@ but.addEventListener("click", () => {
 
     }
     else {
+        boo=true
         var c = document.getElementById('phoneclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
         }
     }
     var id = email.value;
-    if (id=="") {
+    if (id == "") {
+        boo=false
         var c = document.getElementById('emailclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -172,6 +187,7 @@ but.addEventListener("click", () => {
 
     }
     else {
+        boo=true
         var c = document.getElementById('emailclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -180,6 +196,7 @@ but.addEventListener("click", () => {
     }
 
     if (!edu.value) {
+        boo=false
         var c = document.getElementById('educationclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -190,12 +207,14 @@ but.addEventListener("click", () => {
 
     }
     else {
+        boo=true
         var c = document.getElementById('educationclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
         }
     }
     if (!gen.value) {
+        boo=false
         var c = document.getElementById('genderclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -206,12 +225,14 @@ but.addEventListener("click", () => {
 
     }
     else {
+        boo=true
         var c = document.getElementById('genderclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
         }
     }
     if (!age.value) {
+        boo=false
         var c = document.getElementById('ageclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
@@ -222,6 +243,7 @@ but.addEventListener("click", () => {
 
     }
     else {
+        boo=true
         var c = document.getElementById('ageclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
@@ -232,6 +254,7 @@ but.addEventListener("click", () => {
     if (el1.value != el2.value || el1.value == "" || el2.value == "") {
         var c = document.getElementById('passwordclass')
         if (!c.querySelector("p")) {
+            boo=false
             let p = document.createElement("p")
             p.textContent = "*password do not match"
             p.className = "error"
@@ -241,14 +264,23 @@ but.addEventListener("click", () => {
 
     }
     else {
+        boo=true
         var c = document.getElementById('passwordclass')
         if (c.querySelector("p")) {
             c.removeChild(c.querySelector("p"));
         }
     }
 
+    if (boo){
+        alert("SUCCESSFUL")
+        location.reload();
+    }
 
-
+    else{
+        el1.value=""
+        el2.value=""
+    }
+    
 
 
 
