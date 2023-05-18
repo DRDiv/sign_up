@@ -12,7 +12,8 @@ var namein = document.getElementById('name')
 var cityin = document.getElementById('city')
 const reg1 = /^(\+91|0|)[6-9](\d){9}$/;
 const reg2 = /^[a-zA-Z]{1}[A-Za-z_.]*@[a-zA-Z]+(\.[a-zA-Z]+)?(\.ac\.in|\.com)$/;
-const reg3 = /^[a-zA-Z]{1,}[ ]{0,}  $/;
+const reg3 = /^[a-zA-Z]{1,}[ ]{0,}[a-zA-Z]{0,}$/;
+const reg4= /^[a-zA-Z]{3}[a-zA-Z_0-9]{0,}$/;
 but.addEventListener("click", () => {
     const num = ph.value;
     const id = email.value;
@@ -121,11 +122,11 @@ but.addEventListener("click", () => {
         }
 
     }
-    if (!reg3.test(name)) {
+    if (!reg4.test(name)) {
         var c = document.getElementById('nameclass')
         if (!c.querySelector("p")) {
             let p = document.createElement("p")
-            p.textContent = "*enter valid name"
+            p.textContent = "*name should contain at least 3 letters,and underscore as special char"
             p.className = "error"
             c.appendChild(p)
         }
