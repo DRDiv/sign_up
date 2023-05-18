@@ -12,13 +12,173 @@ var namein = document.getElementById('name')
 var cityin = document.getElementById('city')
 const reg1 = /^(\+91|0|)[6-9](\d){9}$/;
 const reg2 = /^[a-zA-Z]{1}[A-Za-z_.]*@[a-zA-Z]+(\.[a-zA-Z]+)?(\.ac\.in|\.com)$/;
-const reg3 = /^[a-zA-Z]{1,}[ ]{0,}[a-zA-Z]{0,}$/;
-const reg4= /^[a-zA-Z]{3}[a-zA-Z_0-9]{0,}$/;
+const reg3 = /^[A-Za-z\s\-']+$/;
+
+const reg4 = /^[a-zA-Z]{3}[a-zA-Z_0-9]{0,}$/;
+
+cityin.addEventListener('input', () => {
+    var city = cityin.value;
+    if (!reg3.test(city)) {
+        var c = document.getElementById('cityclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*enter valid city"
+            p.className = "error"
+            c.appendChild(p)
+        }
+        
+    }
+    else {
+        var c = document.getElementById('cityclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+    }
+})
+namein.addEventListener('input', () => {
+    var name = namein.value;
+    if (
+
+        !reg4.test(name)) {
+        var c = document.getElementById('nameclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*name should contain at least 3 letters,and underscore as special char"
+            p.className = "error"
+            c.appendChild(p)
+        }
+
+    }
+    else {
+        var c = document.getElementById('nameclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+    }
+})
+ph.addEventListener('input', () => {
+
+
+    var num = ph.value;
+    if (!reg1.test(num)) {
+        var c = document.getElementById('phoneclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*must be valid indian number"
+            p.className = "error"
+            c.appendChild(p)
+        }
+
+
+    }
+    else {
+        var c = document.getElementById('phoneclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+    }
+})
+email.addEventListener('input', () => {
+    var id = email.value;
+    if (!reg2.test(id)) {
+        var c = document.getElementById('emailclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*enter valid email"
+            p.className = "error"
+            c.appendChild(p)
+        }
+
+
+    }
+    else {
+        var c = document.getElementById('emailclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+
+    }
+})
+
+
+
+
 but.addEventListener("click", () => {
-    const num = ph.value;
-    const id = email.value;
-    const name = namein.value;
-    const city = cityin.value;
+    var city = cityin.value;
+    if (city=="") {
+        var c = document.getElementById('cityclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*enter city"
+            p.className = "error"
+            c.appendChild(p)
+        }
+        
+    }
+    else {
+        var c = document.getElementById('cityclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+    }
+    var name = namein.value;
+    if (
+
+        name=="") {
+        var c = document.getElementById('nameclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*name should contain at least 3 letters,and underscore as special char"
+            p.className = "error"
+            c.appendChild(p)
+        }
+
+    }
+    else {
+        var c = document.getElementById('nameclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+    }
+
+    var num = ph.value;
+    if (num=="") {
+        var c = document.getElementById('phoneclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*enter phone number"
+            p.className = "error"
+            c.appendChild(p)
+        }
+
+
+    }
+    else {
+        var c = document.getElementById('phoneclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+    }
+    var id = email.value;
+    if (id=="") {
+        var c = document.getElementById('emailclass')
+        if (!c.querySelector("p")) {
+            let p = document.createElement("p")
+            p.textContent = "*enter email"
+            p.className = "error"
+            c.appendChild(p)
+        }
+
+
+    }
+    else {
+        var c = document.getElementById('emailclass')
+        if (c.querySelector("p")) {
+            c.removeChild(c.querySelector("p"));
+        }
+
+    }
+
     if (!edu.value) {
         var c = document.getElementById('educationclass')
         if (!c.querySelector("p")) {
@@ -27,7 +187,7 @@ but.addEventListener("click", () => {
             p.className = "error"
             c.appendChild(p)
         }
-        alert("PLEASE SELECT EDUCATIONAL QUALIFICATION");
+
     }
     else {
         var c = document.getElementById('educationclass')
@@ -43,7 +203,7 @@ but.addEventListener("click", () => {
             p.className = "error"
             c.appendChild(p)
         }
-        alert("PLEASE SELECT GENDER");
+
     }
     else {
         var c = document.getElementById('genderclass')
@@ -59,7 +219,7 @@ but.addEventListener("click", () => {
             p.className = "error"
             c.appendChild(p)
         }
-        alert("PLEASE SELECT AGE");
+
     }
     else {
         var c = document.getElementById('ageclass')
@@ -68,23 +228,6 @@ but.addEventListener("click", () => {
         }
     }
 
-    if (!reg1.test(num)) {
-        var c = document.getElementById('phoneclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*must be valid indian number"
-            p.className = "error"
-            c.appendChild(p)
-        }
-        alert("INVALID PHONE NUMBER");
-
-    }
-    else {
-        var c = document.getElementById('phoneclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
 
     if (el1.value != el2.value || el1.value == "" || el2.value == "") {
         var c = document.getElementById('passwordclass')
@@ -94,7 +237,7 @@ but.addEventListener("click", () => {
             p.className = "error"
             c.appendChild(p)
         }
-        alert("PASSWORD DO NOT MATCH")
+
 
     }
     else {
@@ -104,55 +247,10 @@ but.addEventListener("click", () => {
         }
     }
 
-    if (!reg2.test(id)) {
-        var c = document.getElementById('emailclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter valid email"
-            p.className = "error"
-            c.appendChild(p)
-        }
-        alert("INVALID EMAIL ID");
 
-    }
-    else {
-        var c = document.getElementById('emailclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
 
-    }
-    if (!reg4.test(name)) {
-        var c = document.getElementById('nameclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*name should contain at least 3 letters,and underscore as special char"
-            p.className = "error"
-            c.appendChild(p)
-        }
-        alert("INVALID NAME");
-    }
-    else {
-        var c = document.getElementById('nameclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
 
-    if (!reg3.test(city)) {
-        var c = document.getElementById('cityclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter valid city"
-            p.className = "error"
-            c.appendChild(p)
-        }
-        alert("INVALID CITY");
-    }
-    else {
-        var c = document.getElementById('cityclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
+
+
+
 })
