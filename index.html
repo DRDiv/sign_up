@@ -1,285 +1,37 @@
-
-
-var el1 = document.getElementById('password')
-var el2 = document.getElementById('cpassword')
-var ph = document.getElementById('phone')
-var email = document.getElementById('email')
-var but = document.getElementById('but')
-var edu = document.getElementById('education')
-var age = document.getElementById('age')
-var gen = document.getElementById('gender')
-var namein = document.getElementById('name')
-var cityin = document.getElementById('city')
-const reg1 = /^(\+91|0|)[6-9](\d){9}$/;
-const reg2 = /^[a-zA-Z]{1}[A-Za-z_.]*@[a-zA-Z]+(\.[a-zA-Z]+)?(\.ac\.in|\.com)$/;
-const reg3 = /^[A-Za-z\s\-']+$/;
-
-const reg4 = /^[a-zA-Z]{3}[a-zA-Z_0-9]{0,}$/;
-var boo = true;
-cityin.addEventListener('input', () => {
-    var city = cityin.value;
-    if (!reg3.test(city)) {
-        boo = false
-        var c = document.getElementById('cityclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter valid city"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-    }
-    else {
-
-        var c = document.getElementById('cityclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-})
-namein.addEventListener('input', () => {
-    var name = namein.value;
-    if (
-
-        !reg4.test(name)) {
-        boo = false
-        var c = document.getElementById('nameclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*name should contain at least 3 letters,and underscore as special char"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-    }
-    else {
-        boo = true
-        var c = document.getElementById('nameclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-})
-ph.addEventListener('input', () => {
-
-
-    var num = ph.value;
-    if (!reg1.test(num)) {
-        boo = false
-        var c = document.getElementById('phoneclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*must be valid indian number"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-
-    }
-    else {
-        boo = true
-        var c = document.getElementById('phoneclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-})
-email.addEventListener('input', () => {
-    var id = email.value;
-    if (!reg2.test(id)) {
-        boo = false
-        var c = document.getElementById('emailclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter valid email"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-
-    }
-    else {
-        boo = true
-        var c = document.getElementById('emailclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-
-    }
-})
-
-
-
-
-but.addEventListener("click", () => {
-    var city = cityin.value;
-    if (city == "") {
-        boo = false
-        var c = document.getElementById('cityclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter city"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-    }
-    else {
-        boo = true
-        var c = document.getElementById('cityclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-    var name = namein.value;
-    if (
-
-        name == "") {
-        boo = false
-        var c = document.getElementById('nameclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*name should contain at least 3 letters,and underscore as special char"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-    }
-    else {
-        boo = true
-        var c = document.getElementById('nameclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-
-    var num = ph.value;
-    if (num == "") {
-        boo=false
-        var c = document.getElementById('phoneclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter phone number"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-
-    }
-    else {
-        boo=true
-        var c = document.getElementById('phoneclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-    var id = email.value;
-    if (id == "") {
-        boo=false
-        var c = document.getElementById('emailclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter email"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-
-    }
-    else {
-        boo=true
-        var c = document.getElementById('emailclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-
-    }
-
-    if (!edu.value) {
-        boo=false
-        var c = document.getElementById('educationclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*select a field"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-    }
-    else {
-        boo=true
-        var c = document.getElementById('educationclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-    if (!gen.value) {
-        boo=false
-        var c = document.getElementById('genderclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*select a field"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-    }
-    else {
-        boo=true
-        var c = document.getElementById('genderclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-    if (!age.value) {
-        boo=false
-        var c = document.getElementById('ageclass')
-        if (!c.querySelector("p")) {
-            let p = document.createElement("p")
-            p.textContent = "*enter a valid age"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-    }
-    else {
-        boo=true
-        var c = document.getElementById('ageclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-
-
-    if (el1.value != el2.value || el1.value == "" || el2.value == "") {
-        var c = document.getElementById('passwordclass')
-        if (!c.querySelector("p")) {
-            boo=false
-            let p = document.createElement("p")
-            p.textContent = "*password do not match"
-            p.className = "error"
-            c.appendChild(p)
-        }
-
-
-    }
-    else {
-        boo=true
-        var c = document.getElementById('passwordclass')
-        if (c.querySelector("p")) {
-            c.removeChild(c.querySelector("p"));
-        }
-    }
-
-    if (boo){
-        alert("SUCCESSFUL")
-        location.reload();
-    }
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="sign_up.css" rel="stylesheet">
     
-
-
-
-
-})
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="educationclass">EDUCATIONAL QUALIFICATION: <select id="education">
+        <option selected disabled hidden id="default"></option>
+        <option>10th</option>
+        <option>12th</option>
+        <option>BTECH DEGREE</option>
+        <option>MTECH DEGREE</option>
+        <option>PHD DEGREE</option>
+    </select></div>
+    <div id="phoneclass">PHONE NUMBER: <input id="phone"></div>
+    <div id="ageclass">AGE: <input id="age" type="number"></div>
+    <div id="genderclass">GENDER: <select id="gender">
+        <option selected disabled hidden ></option>
+        <option>M</option>
+        <option>F</option>
+        <option>OTHERS</option></select></div>
+    <div id="emailclass">EMAIL: <input id="email" type="email"></div>
+    <div >PASSWORD: <input id="password" type="password"> </div>
+    <div id="passwordclass">CONFIRM PASSWORD: <input id="cpassword" type="password"> </div>
+    <div id="nameclass">NAME: <input id="name"></div>
+    <div id="cityclass">CITY: <input id="city"></div>
+    <button id="but">SUBMIT</button>
+    
+    <script src="sign_up.js" ></script>
+    
+</body>
+</html>
